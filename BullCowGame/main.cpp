@@ -86,13 +86,9 @@ string GetGuess()
 
 bool AskToPlayAgain()
 {
-	cout << "Do you want to play again?";
+	cout << "Do you want to play again? ";
 	string Response = "";
 	getline(cin, Response);
-
-	//cout << "First char: " << Response[0];
-
-	bool aux = (tolower(Response[0]) == 'y');
-
+	
 	return (tolower(Response[0]) == 'y');
 }
