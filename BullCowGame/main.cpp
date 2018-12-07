@@ -4,20 +4,20 @@
 #include <string>
 
 // Namespace is a place where objects and properties live inside a group
-using namespace std;
+//using namespace std;
 
 // Declare the function
 void PrintIntro();
 void PlayGame();
 void PrintGuess(std::string &Guess);
-string GetGuess();
+std::string GetGuess();
 bool AskToPlayAgain();
 
 // Entry point of our application
 int main() 
 {
 
-	bool KeepPlaying = true;
+	bool bKeepPlaying = false;
 
 	do
 	{
@@ -25,9 +25,9 @@ int main()
 
 		PlayGame();
 
-		KeepPlaying = AskToPlayAgain();
+		bKeepPlaying = AskToPlayAgain();
 
-	} while (KeepPlaying);	
+	} while (bKeepPlaying);
 		
 	return 0; // exit the application
 
@@ -40,16 +40,16 @@ void PlayGame()
 
 	for (int i = 1; i <= NUMBER_OF_TURNS; i++)
 	{
-		string Guess = GetGuess();
+		std::string Guess = GetGuess();
 
 		PrintGuess(Guess);
 	}
 }
 
-void PrintGuess(string &Guess)
+void PrintGuess(std::string &Guess)
 {
 	// repeat the guess back to them
-	cout << "Your guess was: " << Guess << endl << endl;
+	std::cout << "Your guess was: " << Guess << std::endl << std::endl;
 }
 
 
@@ -64,21 +64,21 @@ void PrintIntro()
 	// std::cout << "Welcome to Bulls and Cows" << std::endl;
 
 	// introduce the game
-	cout << "Welcome to Bulls and Cows, a fun word game." << endl;
-	cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of?" << endl << endl;
+	std::cout << "Welcome to Bulls and Cows, a fun word game." << std::endl;
+	std::cout << "Can you guess the " << WORD_LENGTH << " letter isogram I'm thinking of?" << std::endl << std::endl;
 
 	return;
 
 }
 
 // Get a guess from the player
-string GetGuess() 
+std::string GetGuess() 
 {
 	// get a guess from the player
-	string Guess = "";
-	cout << "Please enter your guess: ";
+	std::string Guess = "";
+	std::cout << "Please enter your guess: ";
 	//cin >> Guess; // this does not accept spaces
-	getline(cin, Guess);
+	std::getline(std::cin, Guess);
 
 	return Guess;
 
@@ -86,9 +86,9 @@ string GetGuess()
 
 bool AskToPlayAgain()
 {
-	cout << "Do you want to play again? ";
-	string Response = "";
-	getline(cin, Response);
+	std::cout << "Do you want to play again (y/n)? ";
+	std::string Response = "";
+	std::getline(std::cin, Response);
 	
 	return (tolower(Response[0]) == 'y');
 }
